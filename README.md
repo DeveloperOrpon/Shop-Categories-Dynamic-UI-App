@@ -1,7 +1,7 @@
 # shop_app
 A new Flutter Practice.
 <h1> Project look on device </h1>
-<img src='https://github.com/DeveloperOrpon/Shop-Categories-Dynamic-Ui/blob/main/shopApp.gif?raw=true' width="300px"  />
+<img src='https://github.com/DeveloperOrpon/Shop-Categories-Dynamic-UI-App/blob/main/shopApp.gif?raw=true' width="300px"  />
 
 
 ## Important Things
