@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/shopping_card_screen.dart';
 import '../custom_ui/product_card.dart';
 import '../model/products.dart';
 
@@ -44,13 +45,36 @@ class _AddProdectScreenState extends State<AddProdectScreen> {
               tooltip: 'Open shopping cart',
               onPressed: () {
                 // handle the press
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ShoppingCardScreen(
+                      //seleted items filtering items
+                      selectedProduct: productList
+                          .where((element) => element.isAdded == true)
+                          .toList(),
+                    ),
+                  ),
+                );
               },
             ),
           ],
         ),
         // Button card button
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ShoppingCardScreen(
+                  //seleted items filtering items
+                  selectedProduct: productList
+                      .where((element) => element.isAdded == true)
+                      .toList(),
+                ),
+              ),
+            );
+          },
           label: const Text("Open Card"),
           icon: const Icon(Icons.shopping_cart),
         ),

@@ -15,6 +15,9 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: widget.product.isAdded
+          ? const Color.fromARGB(255, 196, 230, 197)
+          : null,
       margin: EdgeInsets.symmetric(
         horizontal: mq.width * 0.02,
         vertical: mq.width * 0.02,
@@ -34,16 +37,36 @@ class _ProductCardState extends State<ProductCard> {
           ),
         ),
         subtitle: Text("${widget.product.price}৳"),
-        trailing: ElevatedButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.shopping_cart_rounded),
-          label: const Text("Add"),
-          style: ElevatedButton.styleFrom(
-            elevation: 5,
-            shape: const StadiumBorder(),
-            padding: const EdgeInsets.all(17.0),
-          ),
-        ),
+        trailing: widget.product.isAdded
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    widget.product.isAdded = false;
+                  });
+                },
+                icon: Image.asset('images/check.png'),
+              )
+            : ElevatedButton.icon(
+                onPressed: () {
+                  setState(() {
+                    widget.product.isAdded = true;
+                  });
+
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Product Added Sussesfully"),
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: Colors.red,
+                    elevation: 10.5,
+                  ));
+                },
+                icon: const Icon(Icons.shopping_cart_rounded),
+                label: const Text("Add"),
+                style: ElevatedButton.styleFrom(
+                  elevation: 5,
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.all(17.0),
+                ),
+              ),
       ),
     );
   }
